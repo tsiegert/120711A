@@ -167,8 +167,8 @@ def band_function100(energy,p):
     lo_idx = np.where(energy <= (p[1]-p[3])*p[2])[0]
     hi_idx = np.where(energy > (p[1]-p[3])*p[2])[0]
 
-    val[lo_idx] = p[0]*np.power(energy[lo_idx]/E0,p[1])*np.exp(-energy[lo_idx]/p[2])
-    val[hi_idx] = p[0]*((p[1]-p[3])*p[2]/E0)**(p[1]-p[3])*np.power(energy[hi_idx]/E0,p[3])*np.exp(p[3]-p[1])
+    val[lo_idx] = p[0]*(energy[lo_idx]/E0)**p[1]*np.exp(-energy[lo_idx]/p[2])
+    val[hi_idx] = p[0]*((p[1]-p[3])*p[2]/E0)**(p[1]-p[3])*(energy[hi_idx]/E0)**p[3]*np.exp(p[3]-p[1])
     
     return val
 
